@@ -1,8 +1,7 @@
-
 Project Summary: LINE Chatbot Powered by OpenAI API (Running on Local Laptop)
 
 🎯 Goal
-Create a LINE chatbot that communicates with users (1-on-1 or in group chats) via the LINE Messaging API, processes user messages using OpenAI Assistant API, and runs the entire backend on a local laptop server using Python.
+Create a LINE chatbot that communicates with users (1-on-1 or in group chats) via the LINE Messaging API, processes user messages using OpenAI API, and runs the entire backend on a local laptop server using Python.
 
 🧩 Key Components
 
@@ -18,13 +17,14 @@ Create a LINE chatbot that communicates with users (1-on-1 or in group chats) vi
 
 3. Backend (Local Server)
 - Language: Python
-- Framework: functions-framework
-- Server: Runs on your own laptop
+- Framework: FastAPI
+- Server: Uvicorn ASGI server
 - Tunnel Tool: ngrok used to expose localhost to the internet via public HTTPS
+- Future Deployment Options: Vercel or Heroku
 
 4. AI Engine
-- OpenAI API
-
+- Phase 1: OpenAI Chat Completions API
+- Phase 2 (Future): OpenAI Assistants API
 
 🔄 End-to-End Workflow
 
@@ -41,7 +41,7 @@ Component        | Tech Used
 -----------------|------------------------
 Chat Interface   | LINE App
 Webhook Handling | LINE Messaging API
-Backend Server   | Python 
+Backend Server   | Python + FastAPI + Uvicorn
 Exposure Tool    | ngrok (Free plan)
 AI Backend       | OpenAI API
 Deployment       | Laptop (Localhost)
@@ -53,6 +53,17 @@ Deployment       | Laptop (Localhost)
   - LINE_CHANNEL_ACCESS_TOKEN
   - OPENAI_API_KEY
 
+🔍 Implementation Approach
+
+Phase 1: Basic Setup with Chat Completions API
+- Set up FastAPI and LINE webhook handler
+- Implement basic conversation using OpenAI's Chat Completions API
+- Focus on reliability and proper error handling
+
+Phase 2: Enhanced Features (After Phase 1 is stable)
+- Potentially upgrade to OpenAI Assistants API for persistent context
+- Add rich message features (buttons, carousel, etc.)
+- Implement user management and conversation history
 
 🛠️ Milestones
 
