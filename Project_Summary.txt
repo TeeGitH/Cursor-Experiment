@@ -1,0 +1,60 @@
+
+Project Summary: LINE Chatbot Powered by OpenAI API (Running on Local Laptop)
+
+🎯 Goal
+Create a LINE chatbot that communicates with users (1-on-1 or in group chats) via the LINE Messaging API, processes user messages using OpenAI Assistant API, and runs the entire backend on a local laptop server using Python.
+
+🧩 Key Components
+
+1. Frontend (User Interface)
+- Platform: LINE Application
+- Users: Individuals or groups interacting with the chatbot
+
+2. Middleware
+- LINE Messaging API
+  - Receives incoming messages
+  - Sends responses back to users
+  - Forwards events to your server via Webhook (HTTPS required)
+
+3. Backend (Local Server)
+- Language: Python
+- Framework: functions-framework
+- Server: Runs on your own laptop
+- Tunnel Tool: ngrok used to expose localhost to the internet via public HTTPS
+
+4. AI Engine
+- OpenAI API
+
+
+🔄 End-to-End Workflow
+
+1. User sends a message to your LINE bot.
+2. LINE Messaging API triggers a webhook to your laptop server.
+3. Your server receives the event and extracts the message.
+4. The message is passed to the OpenAI API.
+5. OpenAI replies.
+6. Your server sends response back to the user via LINE Messaging API.
+
+📦 Project Stack
+
+Component        | Tech Used
+-----------------|------------------------
+Chat Interface   | LINE App
+Webhook Handling | LINE Messaging API
+Backend Server   | Python 
+Exposure Tool    | ngrok (Free plan)
+AI Backend       | OpenAI API
+Deployment       | Laptop (Localhost)
+
+🗂️ Configuration Files
+
+- .env file to store:
+  - LINE_CHANNEL_SECRET
+  - LINE_CHANNEL_ACCESS_TOKEN
+  - OPENAI_API_KEY
+
+
+🛠️ Milestones
+
+- ✅ Create LINE Official Account and Messaging API channel
+
