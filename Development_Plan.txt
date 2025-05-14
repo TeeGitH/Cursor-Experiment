@@ -4,7 +4,7 @@
 
 ### Step 1: Environment Setup (Checkpoint 1)
 - [x] Create Python virtual environment
-- [ ] Install required packages:
+- [x] Install required packages:
   - fastapi
   - uvicorn
   - python-dotenv
@@ -16,6 +16,9 @@
   - LINE_CHANNEL_SECRET
   - LINE_CHANNEL_ACCESS_TOKEN
   - OPENAI_API_KEY
+- [x] Create tutorial files for learning:
+  - Tutorial_FastAPI.py
+  - Tutorial_line-bot-sdk.py 
 - [ ] Create basic project structure
 
 ### Step 2: LINE API Setup (Checkpoint 2)
