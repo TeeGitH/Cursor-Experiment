@@ -1,5 +1,35 @@
-flask==2.3.3
-python-dotenv==1.0.0
-line-bot-sdk==3.17.1
-gunicorn==21.2.0
-requests==2.31.0 
+# FastAPI - https://pypi.org/project/fastapi/
+fastapi>=0.115.0,<0.116.0
+
+# Uvicorn ASGI server - https://pypi.org/project/uvicorn/
+uvicorn>=0.34.1,<0.35.0
+
+# Environment variables management - https://pypi.org/project/python-dotenv/
+python-dotenv>=1.0.0,<2.0.0
+
+# LINE Bot SDK - https://pypi.org/project/line-bot-sdk/
+line-bot-sdk>=3.17.1,<4.0.0
+
+# OpenAI API - https://pypi.org/project/openai/
+openai>=1.0.0,<2.0.0
+
+# HTTP requests - https://pypi.org/project/requests/
+requests>=2.31.0,<3.0.0
+
+# Form data handling - https://pypi.org/project/python-multipart/
+python-multipart>=0.0.6,<0.1.0
+
+# For parsing incoming request body - https://pypi.org/project/pydantic/
+pydantic>=2.4.0,<3.0.0
+
+# For WebSocket support (needed for some ngrok features) - https://pypi.org/project/websockets/
+websockets>=11.0.0,<12.0.0
+
+# For async functionality - https://pypi.org/project/asyncio/
+asyncio>=3.4.3,<4.0.0
+
+# For better logging - https://pypi.org/project/loguru/
+loguru>=0.7.0,<0.8.0
+
+# For ngrok tunnel to expose local server - https://pypi.org/project/pyngrok/
+pyngrok>=7.2.8,<8.0.0 
