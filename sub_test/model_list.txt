@@ -1,0 +1,67 @@
+# OpenAI API Models
+Official documentation: https://platform.openai.com/docs/models
+
+## Chat Completion Models
+
+### GPT-4 Models
+- `gpt-4o-2024-05-13` - Latest GPT-4o, most capable model
+- `gpt-4o-mini` - More affordable version of GPT-4o
+- `gpt-4-turbo` - Also known as gpt-4-0125-preview
+- `gpt-4-1106-preview` - November 2023 version
+- `gpt-4-vision-preview` - For image understanding
+- `gpt-4` - Base GPT-4 model
+
+### GPT-3.5 Models
+- `gpt-3.5-turbo` - Default GPT-3.5 model
+- `gpt-3.5-turbo-16k` - Extended context length
+- `gpt-3.5-turbo-instruct` - Optimized for instruction following
+
+## Embedding Models
+- `text-embedding-3-small` - Most efficient embedding model
+- `text-embedding-3-large` - Most powerful embedding model
+- `text-embedding-ada-002` - Legacy embedding model
+
+## Image Models
+- `dall-e-3` - For image generation
+
+## Usage Example in Python (with Virtual Environment)
+
+### Setting up the virtual environment (Windows)
+```powershell
+# Create virtual environment if it doesn't exist
+python -m venv venv
+
+# Activate the virtual environment
+.\venv\Scripts\Activate.ps1
+
+# Install required packages
+pip install openai
+```
+
+### Python code example
+```python
+from openai import OpenAI
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Initialize the OpenAI client with API key from .env file
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+response = client.chat.completions.create(
+    model="gpt-4o-2024-05-13",  # Replace with your desired model
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Tell me about the Python programming language."}
+    ]
+)
+
+print(response.choices[0].message.content)
+```
+
+### Note:
+Always ensure you're working within an activated virtual environment to maintain dependency isolation. In PowerShell, your prompt should show "(venv)" at the beginning when the environment is activated.
+
+Last updated: May 2024 
