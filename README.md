@@ -1,19 +1,21 @@
-# Python LINE Chatbot Example
+# OpenAI-Powered LINE Chatbot
 
-A simple LINE chatbot built with Python, Flask, and the LINE Messaging API.
+A LINE chatbot powered by OpenAI's GPT-4 model, built with Python, FastAPI, and the LINE Messaging API.
 
 ## Features
 
-- Responds to text messages
-- Handles basic commands (`/help`, `/about`, `/sticker`)
-- Uses quick reply buttons for easy interaction
-- Responds to follow/unfollow events
+- Powered by OpenAI's GPT-4 model
+- Handles text messages with intelligent responses
+- Automatic message splitting for long responses
+- Secure webhook handling with signature verification
+- Comprehensive error handling and logging
 
 ## Prerequisites
 
 - Python 3.9 or higher
 - A LINE developer account
 - A LINE channel with Messaging API enabled
+- An OpenAI API key
 - ngrok (for local development)
 
 ## Setup
@@ -25,18 +27,25 @@ A simple LINE chatbot built with Python, Flask, and the LINE Messaging API.
 3. Get your Channel Secret from the "Basic settings" tab
 4. Issue a Channel Access Token from the "Messaging API" tab
 
-### 2. Environment Setup
+### 2. OpenAI Setup
+
+1. Create an account on [OpenAI Platform](https://platform.openai.com/)
+2. Generate an API key from your account settings
+3. Make sure you have access to the GPT-4 model
+
+### 3. Environment Setup
 
 1. Clone this repository
    ```bash
-   git clone https://github.com/yourusername/line-chatbot-example.git
-   cd line-chatbot-example
+   git clone https://github.com/yourusername/openai-line-bot.git
+   cd openai-line-bot
    ```
 
 2. Create a virtual environment and activate it
    ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   # On Windows:
+   .\venv\Scripts\Activate.ps1
    ```
 
 3. Install the required packages
@@ -44,24 +53,23 @@ A simple LINE chatbot built with Python, Flask, and the LINE Messaging API.
    pip install -r requirements.txt
    ```
 
-4. Create a `.env` file based on `.env.sample` and fill in your LINE credentials
+4. Create a `.env` file with your credentials
    ```
    LINE_CHANNEL_SECRET=your_channel_secret_here
    LINE_CHANNEL_ACCESS_TOKEN=your_channel_access_token_here
-   PORT=5000
-   DEBUG=true
+   OPENAI_API_KEY=your_openai_api_key_here
    ```
 
-### 3. Run the Application Locally with ngrok
+### 4. Run the Application Locally with ngrok
 
-1. Start your Flask application
+1. Start your FastAPI application
    ```bash
-   python app.py
+   python OpenAI_Line_Bot.py
    ```
 
 2. In a new terminal window, start ngrok to expose your local server
    ```bash
-   ngrok http 5000
+   ngrok http 8080
    ```
 
 3. Copy the HTTPS URL provided by ngrok (e.g., `https://a1b2c3d4.ngrok.io`)
@@ -69,47 +77,33 @@ A simple LINE chatbot built with Python, Flask, and the LINE Messaging API.
 4. Set the webhook URL in LINE Developers Console:
    - Go to your channel settings in LINE Developers Console
    - Under the "Messaging API" tab, set the Webhook URL to:
-     `https://your-ngrok-url/callback`
+     `https://your-ngrok-url/`
    - Make sure to turn on "Use webhook"
 
 5. Test your bot by sending a message in the LINE app
 
 ## Project Structure
 
-- `app.py`: Main application file with Flask server and LINE bot logic
+- `OpenAI_Line_Bot.py`: Main application file with FastAPI server and LINE bot logic
 - `requirements.txt`: Required Python packages
-- `.env.sample`: Sample environment variables file
+- `.env`: Environment variables file (create this file with your credentials)
 
-## Deployment
+## Features in Detail
 
-### To Deploy on Heroku
+### Message Handling
+- Automatically splits long responses into multiple messages (LINE's 5,000 character limit)
+- Preserves paragraph structure when splitting messages
+- Handles errors gracefully with user-friendly messages
 
-1. Create a Heroku account and install the Heroku CLI
-2. Initialize a git repository (if not already done)
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   ```
+### OpenAI Integration
+- Uses GPT-4 model for intelligent responses
+- Configurable system prompt
+- Adjustable response parameters (temperature, max_tokens)
 
-3. Create a Heroku app
-   ```bash
-   heroku create your-app-name
-   ```
-
-4. Set the environment variables on Heroku
-   ```bash
-   heroku config:set LINE_CHANNEL_SECRET=your_channel_secret_here
-   heroku config:set LINE_CHANNEL_ACCESS_TOKEN=your_channel_access_token_here
-   ```
-
-5. Deploy to Heroku
-   ```bash
-   git push heroku master
-   ```
-
-6. Update your webhook URL in LINE Developers Console to your Heroku app URL:
-   `https://your-app-name.herokuapp.com/callback`
+### Security
+- LINE signature verification for webhook security
+- Environment variable management for sensitive credentials
+- Comprehensive error handling and logging
 
 ## License
 
@@ -118,4 +112,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Acknowledgments
 
 - [LINE Messaging API Documentation](https://developers.line.biz/en/docs/messaging-api/)
-- [LINE Bot SDK for Python](https://github.com/line/line-bot-sdk-python) 
+- [LINE Bot SDK for Python](https://github.com/line/line-bot-sdk-python)
+- [OpenAI API Documentation](https://platform.openai.com/docs/api-reference)
+- [FastAPI Documentation](https://fastapi.tiangolo.com/) 
