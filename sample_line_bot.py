@@ -40,6 +40,26 @@ handler = WebhookHandler(LINE_CHANNEL_SECRET)
 async def root():
     return {"message": "LINE Bot server is running", "status": "OK"}
 
+@app.post("/")
+async def root_post(request: Request):
+    # Get X-Line-Signature header
+    signature = request.headers.get('X-Line-Signature', '')
+    
+    # Get request body as text
+    body = await request.body()
+    body_text = body.decode('utf-8')
+    
+    logger.info(f"Received webhook at root: {body_text}")
+    
+    # Handle webhook body
+    try:
+        handler.handle(body_text, signature)
+    except InvalidSignatureError:
+        logger.error("Invalid signature detected")
+        raise HTTPException(status_code=400, detail="Invalid signature")
+    
+    return PlainTextResponse(content='OK')
+
 # Define webhook endpoint
 @app.post("/callback")
 async def callback(request: Request):
@@ -84,6 +104,6 @@ def handle_text_message(event):
 
 if __name__ == "__main__":
     logger.info("Starting LINE Bot server...")
-    logger.info("To use with ngrok: Run 'ngrok http 8000' in a separate terminal")
+    logger.info("To use with ngrok: Run 'ngrok http 8080' in a separate terminal")
     logger.info("Then update your webhook URL in the LINE Developer Console")
-    uvicorn.run("sample_line_bot:app", host="127.0.0.1", port=8000, reload=True) 
+    uvicorn.run("sample_line_bot:app", host="127.0.0.1", port=8080, reload=True) 
