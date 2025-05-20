@@ -9,6 +9,26 @@ A LINE chatbot powered by OpenAI's GPT-4 model, built with Python, FastAPI, and 
 - Automatic message splitting for long responses
 - Secure webhook handling with signature verification
 - Comprehensive error handling and logging
+- Image recognition and analysis (v02)
+- Audio transcription and response (v02)
+- Multi-modal communication support (v02)
+
+## Version History
+
+### v01 Features
+- Text message handling with GPT-4
+- Automatic message splitting for responses exceeding LINE's character limit
+- Secure webhook verification
+- Error handling and logging
+- System configurations and environment variable management
+
+### v02 Features (All v01 features plus:)
+- **Image Processing**: Analyzes images, describes content, and identifies text in images
+- **Text-in-Image Response**: Recognizes and responds to questions or requests found in image text
+- **Audio Transcription**: Converts voice messages to text using Whisper API
+- **Audio Response**: Responds to transcribed audio content
+- **Enhanced Token Management**: Increased token limits for more detailed responses
+- **Multi-modal Communication**: Seamless handling of text, image, and audio messages
 
 ## Prerequisites
 
@@ -62,9 +82,13 @@ A LINE chatbot powered by OpenAI's GPT-4 model, built with Python, FastAPI, and 
 
 ### 4. Run the Application Locally with ngrok
 
-1. Start your FastAPI application
+1. Start your FastAPI application. Choose the version you want to run:
    ```bash
-   python OpenAI_Line_Bot.py
+   # For text-only version:
+   python OpenAI_Line_Bot_v01.py
+   
+   # For version with image and audio support:
+   python OpenAI_Line_Bot_v02.py
    ```
 
 2. In a new terminal window, start ngrok to expose your local server
@@ -84,7 +108,8 @@ A LINE chatbot powered by OpenAI's GPT-4 model, built with Python, FastAPI, and 
 
 ## Project Structure
 
-- `OpenAI_Line_Bot.py`: Main application file with FastAPI server and LINE bot logic
+- `OpenAI_Line_Bot_v01.py`: Initial version with text-only message processing
+- `OpenAI_Line_Bot_v02.py`: Enhanced version with image and audio processing capabilities
 - `requirements.txt`: Required Python packages
 - `.env`: Environment variables file (create this file with your credentials)
 
@@ -104,6 +129,24 @@ A LINE chatbot powered by OpenAI's GPT-4 model, built with Python, FastAPI, and 
 - LINE signature verification for webhook security
 - Environment variable management for sensitive credentials
 - Comprehensive error handling and logging
+
+### Multi-modal Capabilities (v02)
+- **Image Analysis**: Processes images using OpenAI's Vision API (GPT-4o)
+- **Text Recognition**: Identifies and extracts text content from images
+- **Image Content Response**: Responds to questions or instructions found in images
+- **Audio Processing**: Transcribes voice messages using Whisper API
+- **Combined Response Format**: Returns both transcription and contextual response for audio
+
+### Running a Specific Version
+To run version 1 (text-only bot):
+```bash
+python OpenAI_Line_Bot_v01.py
+```
+
+To run version 2 (with image and audio support):
+```bash
+python OpenAI_Line_Bot_v02.py
+```
 
 ## License
 

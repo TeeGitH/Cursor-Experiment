@@ -175,4 +175,4 @@ if __name__ == "__main__":
     logger.info("Starting LINE Bot server...")
     logger.info("To use with ngrok: Run 'ngrok http 8080' in a separate terminal")
     logger.info("Then update your webhook URL in the LINE Developer Console")
-    uvicorn.run("sample_line_bot:app", host="127.0.0.1", port=8080, reload=True) 
+    uvicorn.run("OpenAI_Line_Bot_v01:app", host="127.0.0.1", port=8080, reload=True) 
