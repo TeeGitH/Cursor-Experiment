@@ -254,7 +254,7 @@ def handle_image_message(event):
                         ]
                     }
                 ],
-                max_tokens=2500
+                max_tokens=5000
             )
             
             # Extract the response text
