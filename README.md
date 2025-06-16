@@ -30,6 +30,16 @@ A LINE chatbot powered by OpenAI's GPT-4 model, built with Python, FastAPI, and 
 - **Enhanced Token Management**: Increased token limits for more detailed responses
 - **Multi-modal Communication**: Seamless handling of text, image, and audio messages
 
+### v03 Features (All v02 features plus:)
+- **OpenAI Assistants API Integration**: Uses the new OpenAI Assistants API for more consistent and contextual conversations
+- **Thread Management**: Maintains conversation threads for each user, enabling more coherent multi-turn conversations
+- **Enhanced Error Handling**: More detailed error logging and user-friendly error messages
+- **Improved Image Processing**: Better handling of image analysis with the Assistants API
+- **Streamlined Audio Processing**: More efficient audio transcription and response pipeline
+- **Background Task Processing**: Asynchronous handling of long-running tasks
+- **Comprehensive Logging**: Detailed logging for better debugging and monitoring
+- **Environment Variable Validation**: Automatic verification of required environment variables at startup
+
 ## Prerequisites
 
 - Python 3.9 or higher
@@ -78,6 +88,7 @@ A LINE chatbot powered by OpenAI's GPT-4 model, built with Python, FastAPI, and 
    LINE_CHANNEL_SECRET=your_channel_secret_here
    LINE_CHANNEL_ACCESS_TOKEN=your_channel_access_token_here
    OPENAI_API_KEY=your_openai_api_key_here
+   ASSISTANT_ID=your_openai_assistant_id_here
    ```
 
 ### 4. Run the Application Locally with ngrok
@@ -110,6 +121,7 @@ A LINE chatbot powered by OpenAI's GPT-4 model, built with Python, FastAPI, and 
 
 - `OpenAI_Line_Bot_v01.py`: Initial version with text-only message processing
 - `OpenAI_Line_Bot_v02.py`: Enhanced version with image and audio processing capabilities
+- `OpenAI_Line_Bot_v03.py`: Version with OpenAI Assistants API integration
 - `requirements.txt`: Required Python packages
 - `.env`: Environment variables file (create this file with your credentials)
 
@@ -146,6 +158,11 @@ python OpenAI_Line_Bot_v01.py
 To run version 2 (with image and audio support):
 ```bash
 python OpenAI_Line_Bot_v02.py
+```
+
+To run version 3 (with OpenAI Assistants API integration):
+```bash
+python OpenAI_Line_Bot_v03.py
 ```
 
 ## License
